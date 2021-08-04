@@ -20,7 +20,6 @@ export async function getStaticProps() {
 }
 
 const FreeCourse = ({ data, teacherList }) => {
-  console.log(data, "dataaaaaa");
   return (
     <div className="grid grid-cols-3 gap-4 text-center p-6">
       {teacherList.map((teacher) => {
