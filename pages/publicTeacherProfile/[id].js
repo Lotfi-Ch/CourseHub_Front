@@ -1,5 +1,4 @@
-import axios from "axios";
-// import bgImg from "../../img.jpg";
+
 import ReactStars from "react-rating-stars-component";
 import Image from "next/image";
 import { useState } from "react";
@@ -70,7 +69,6 @@ const Details = ({ data, blogs, teacherId }) => {
     e.target.reset();
   };
 
-  console.log(teacherId, "where man");
   return (
     <div>
       <div className="max-w-7xl flex items-center h-auto  flex-wrap mx-auto my-32 lg:my-0">

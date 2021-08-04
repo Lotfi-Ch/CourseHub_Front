@@ -8,9 +8,10 @@ import Card from "@material-ui/core/Card";
 import ReactCardFlip from "react-card-flip";
 import Link from "next/link";
 import ReactStars from "react-rating-stars-component";
+import { useRouter } from "next/router";
 
 
-export async function getStaticProps() {
+export const getStaticProps = async() => {
   console.log(process.env.server, "procecececec");
   const student = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/admin/students/all`);
   const students = await student.json();
@@ -26,8 +27,8 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ students, form }) {
-  console.log(server, "server");
+const Home = ({ students, form })=> {
+  const router = useRouter()
 
   const [flip1, setflip1] = useState(false);
   const [flip2, setflip2] = useState(false);
@@ -36,7 +37,9 @@ export default function Home({ students, form }) {
   const [render, setrender] = useState(false);
   const [noRender, setnoRender] = useState(true);
   const [renderOne, setrenderOne] = useState(false);
-
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   function handleClick(e, func, val) {
     e.preventDefault();
     func(!val);
@@ -358,3 +361,5 @@ export default function Home({ students, form }) {
     </>
   );
 }
+
+export default Home;
