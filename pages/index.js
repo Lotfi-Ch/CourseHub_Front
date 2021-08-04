@@ -9,7 +9,6 @@ import ReactCardFlip from "react-card-flip";
 import Link from "next/link";
 import ReactStars from "react-rating-stars-component";
 
-import { server } from "../config/index";
 
 export async function getStaticProps() {
   console.log(process.env.server, "procecececec");
