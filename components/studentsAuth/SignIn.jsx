@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { storage } from "../../firebase";
+
 import Swal from "sweetalert2";
 
 export default function SignIn() {
