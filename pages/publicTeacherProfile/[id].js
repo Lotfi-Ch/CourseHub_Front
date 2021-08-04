@@ -3,7 +3,6 @@ import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import Image from "next/image";
 import { useState } from "react";
-import moment from "moment";
 import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
 

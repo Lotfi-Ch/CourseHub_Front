@@ -8,7 +8,7 @@ export async function getStaticProps() {
   );
   const data = await response.json();
   const teacher = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER}admin/all/teacher`
+    `${process.env.NEXT_PUBLIC_SERVER}/admin/all/teacher`
   );
   const teacherList = await teacher.json();
   return {
@@ -19,7 +19,7 @@ export async function getStaticProps() {
   };
 }
 
-const freeCourse = ({ data, teacherList }) => {
+const FreeCourse = ({ data, teacherList }) => {
   console.log(data, "dataaaaaa");
   return (
     <div className="grid grid-cols-3 gap-4 text-center p-6">
@@ -69,4 +69,4 @@ const freeCourse = ({ data, teacherList }) => {
   );
 };
 
-export default freeCourse;
+export default FreeCourse;

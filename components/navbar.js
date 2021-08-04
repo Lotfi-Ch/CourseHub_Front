@@ -17,7 +17,7 @@ const Navbar = () => {
     useEffect(() => {
         settoken(localStorage.getItem('token'))
          
-         console.log(token);
+         
     },[])
 const logout = (e) => {
             

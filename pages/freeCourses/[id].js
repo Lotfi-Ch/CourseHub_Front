@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import Link from "next/link";
 
 export const getStaticPaths = async () => {
-  const response = await fetch("http://localhost:4200/freecourse/all");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/freecourse/all`);
   const data = await response.json();
   const paths = data.map((course) => {
     let id = course.freeCourse_id;
@@ -20,13 +20,13 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(`http://localhost:4200/freecourse/all/${id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/freecourse/all/${id}`);
   const data = await res.json();
 
   const att_id = context.params.id;
   console.log(att_id, "attachement id");
   const response = await fetch(
-    `http://localhost:4200/freecourse/attachement/${att_id}`
+    `${process.env.NEXT_PUBLIC_SERVER}/freecourse/attachement/${att_id}`
   );
   const attachement = await response.json();
 

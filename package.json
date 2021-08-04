@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "start:dev": "nodemon server/server.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
@@ -66,6 +65,5 @@
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
     "prisma": "^2.27.0"
-  },
-  "proxy": "http://localhost:4200"
+  }
 }
