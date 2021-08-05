@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { storage } from "../../firebase";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 export default function SignIn() {
   const router = useRouter();
@@ -206,13 +207,13 @@ export default function SignIn() {
             </div>
           </form>
           <div className="flex items-center mt-3 justify-center">
-            <form action="http://localhost:3000/student/login">
+            <Link href={"/student/login"}>
               <button
                 className={"justify-center text-blue-500 hover:underline"}
               >
                 Already Have account? Login To Your Account
               </button>
-            </form>
+            </Link>
           </div>
         </div>
       </div>

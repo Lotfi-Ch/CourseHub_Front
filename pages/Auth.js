@@ -49,7 +49,6 @@ function Auth() {
               </div>
             </form>
             <div className="flex items-center mt-3 justify-center">
-              <form action="http://localhost:3000/student/login"></form>
             </div>
           </div>
         </div>

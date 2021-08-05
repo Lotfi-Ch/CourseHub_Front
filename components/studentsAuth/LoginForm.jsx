@@ -2,9 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { connect } from "react-redux";
-
-
+import Link from "next/link";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -27,7 +25,10 @@ export default function LoginForm() {
     }
     console.log(loginData);
     axios
-      .post(`${process.env.NEXT_PUBLIC_SERVER}/api/auth/student/logIn`, loginData)
+      .post(
+        `${process.env.NEXT_PUBLIC_SERVER}/api/auth/student/logIn`,
+        loginData
+      )
 
       .then((response) => {
         localStorage.setItem("token", response.data.result.token);
@@ -87,13 +88,13 @@ export default function LoginForm() {
             </div>
           </form>
           <div className="flex items-center mt-3 justify-center">
-            <form action="http://localhost:3000/student/signup">
+            <Link href={"/student/signup"}>
               <button
                 className={"justify-center text-blue-500 hover:underline"}
               >
                 Need to register? Sign up for free
               </button>
-            </form>
+            </Link>
           </div>
         </div>
       </div>

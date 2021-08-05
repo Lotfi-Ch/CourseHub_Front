@@ -37,7 +37,7 @@ export default function PaymentForm() {
     e.preventDefault();
 
     setAmount({ ...amountData, [e.target.name]: e.target.value });
-  
+    console.log(amountData, amountData.amount * 100);
   };
 
   const handleSubmit = async (e) => {
@@ -59,7 +59,7 @@ export default function PaymentForm() {
         });
 
         if (response.data.success) {
-       
+          console.log(`Successful payment`);
           setSuccess(true);
           axios
             .post(`${process.env.NEXT_PUBLIC_SERVER}/api/getOldBalence`, {
@@ -73,7 +73,7 @@ export default function PaymentForm() {
                   newWallet: newWallet,
                 })
                 .then((response) => {
-                 
+                  console.log(response);
                   setTimeout(() => {
                     router.push(
                       `/privateStudentProfile/${response.data.student_id}`

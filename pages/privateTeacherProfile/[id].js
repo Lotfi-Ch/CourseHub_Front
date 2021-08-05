@@ -3,6 +3,8 @@ import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import ReactDOM from "react-dom";
+import React from "react";
 
 export const getStaticPaths = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/admin/teacher/all`);
@@ -50,6 +52,21 @@ export const getStaticProps = async (context) => {
 const Teacher = ({ teacher, days, sessions }) => {
   console.log(teacher, days, sessions);
   const router = useRouter();
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <div
@@ -130,12 +147,26 @@ const Teacher = ({ teacher, days, sessions }) => {
                   Chat room
                 </a>
               </Link>
-              <a
-                href=""
-                className="bg font-bold text-sm text-gray-600 w-full text-center py-3 hover:bg-gray-600 hover:text-white hover:shadow-lg"
+              <Link
+                href={`/privateTeacherProfile/${teacher.teacher_id}/update`}
               >
-                Update information
-              </a>
+                <a
+                  href=""
+                  className="bg font-bold text-sm text-gray-600 w-full text-center py-3 hover:bg-gray-600 hover:text-white hover:shadow-lg"
+                >
+                  Update information
+                </a>
+              </Link>
+              <Link
+                href={`/privateTeacherProfile/${teacher.teacher_id}/updateschedule`}
+              >
+                <a
+                  href=""
+                  className="bg font-bold text-sm text-yellow-600 w-full text-center py-3 hover:bg-yellow-600 hover:text-white hover:shadow-lg"
+                >
+                  update scheduel
+                </a>
+              </Link>
             </div>
 
             <div className="w-full">
@@ -145,7 +176,7 @@ const Teacher = ({ teacher, days, sessions }) => {
               <div className="mt-5 w-full">
                 <p
                   href="#"
-                  className=" flex justify-center w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4  hover:bg-gray-100 transition duration-150"
+                  className=" flex justify-between w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4  hover:bg-gray-100 transition duration-150"
                 >
                   <div className="p-2"> Education </div>
                   <span className="text-gray-400 text-sm p-2">
@@ -155,7 +186,7 @@ const Teacher = ({ teacher, days, sessions }) => {
 
                 <p
                   href="#"
-                  className=" flex justify-center w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 hover:bg-gray-100 transition duration-150"
+                  className=" flex justify-between w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 hover:bg-gray-100 transition duration-150"
                 >
                   <div className="p-2"> Age</div>
 
@@ -163,16 +194,17 @@ const Teacher = ({ teacher, days, sessions }) => {
                     {teacher.age}
                   </span>
                 </p>
-
-                <p
-                  href="#"
-                  className=" flex justify-center w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 hover:bg-gray-100 transition duration-150"
-                >
-                  <div className="p-2"> Overall rating </div>
-                  <span className="text-gray-400 text-sm p-2">
-                    {teacher.Overall_rating}
-                  </span>
-                </p>
+                <div>
+                  <p
+                    href="#"
+                    className=" flex justify-between w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 hover:bg-gray-100 transition duration-150"
+                  >
+                    <div className="p-2">Overall rating </div>
+                    <span className="text-gray-400 text-sm p-2">
+                      {teacher.Overall_rating}
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
